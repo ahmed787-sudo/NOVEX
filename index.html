@@ -3,50 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101114">
-  <title>NOVEX | متجرك لكل شيء</title>
-  <meta name="description" content="NOVEX متجر إلكتروني لمنتجات متنوعة. اكتشف المنتجات وأضفها إلى سلة التسوق.">
+  <meta name="theme-color" content="#111111">
+  <title>NOVEX | اختيارات تستاهل</title>
+  <meta name="description" content="NOVEX - منتجات مختارة للاستخدام اليومي.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="NOVEX الرئيسية">NOVE<span>X</span></a>
-    <nav><a href="#products">المنتجات</a><a href="#about">عن NOVEX</a></nav>
-    <button class="cart-button" id="cartToggle">السلة <b id="cartCount">0</b></button>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">اكتشف. اختار. اطلب.</p>
-        <h1>كل اللي بتدور عليه،<br><span>في مكان واحد.</span></h1>
-        <p>منتجات متنوعة وتجربة تسوق بسيطة مع NOVEX.</p>
-        <a class="primary-link" href="#products">تسوق الآن</a>
+<header class="site-header">
+  <a class="wordmark" href="#" aria-label="NOVEX">NOVE<span>X</span></a>
+  <nav class="main-nav"><a href="#products">كل المنتجات</a><a href="#story">عن المتجر</a></nav>
+  <button class="cart-trigger" id="cartToggle" type="button"><span>سلة المشتريات</span><b id="cartCount">0</b></button>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="kicker">NOVEX / ONLINE STORE</p>
+      <h1>اختيارات يومك،<br><em>في مكان واحد.</em></h1>
+      <p class="hero-description">منتجات متنوعة للاستخدام اليومي. تصفّح براحتك واختار اللي يناسبك.</p>
+      <a class="hero-link" href="#products">تصفّح المنتجات <span>←</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="art-ring"></div><span class="art-n">N</span><span class="art-x">X</span><small>NEW<br>SELECTION</small></div>
+    <div class="hero-index">01 <span>/</span> 04</div>
+  </section>
+
+  <section class="catalog" id="products">
+    <div class="section-top"><div><p class="kicker">تسوّق حسب احتياجك</p><h2>المنتجات</h2></div><p class="catalog-note">اختار القسم أو ابحث عن منتج بالاسم</p></div>
+    <div class="catalog-tools">
+      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="بتدور على إيه؟" aria-label="ابحث عن منتج"></label>
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="الكل">الكل</button>
+        <button class="filter" data-category="إلكترونيات">إلكترونيات</button>
+        <button class="filter" data-category="ملابس">ملابس</button>
+        <button class="filter" data-category="إكسسوارات">إكسسوارات</button>
+        <button class="filter" data-category="منزل">للمنزل</button>
       </div>
-      <div class="hero-mark" aria-hidden="true">N<span>X</span></div>
-    </section>
-    <section class="catalog" id="products">
-      <div class="section-heading"><div><p class="eyebrow">اختيارات NOVEX</p><h2>تصفح المنتجات</h2></div><span id="resultCount"></span></div>
-      <div class="toolbar">
-        <input id="searchInput" type="search" placeholder="ابحث عن منتج..." aria-label="ابحث عن منتج">
-        <div class="filters" id="filters">
-          <button class="filter active" data-category="الكل">الكل</button>
-          <button class="filter" data-category="إلكترونيات">إلكترونيات</button>
-          <button class="filter" data-category="ملابس">ملابس</button>
-          <button class="filter" data-category="إكسسوارات">إكسسوارات</button>
-          <button class="filter" data-category="منزل">منزل</button>
-        </div>
-      </div>
-      <div class="product-grid" id="productGrid"></div>
-    </section>
-    <section class="about" id="about"><p class="eyebrow">NOVEX</p><h2>تسوق أسهل، واختيارات أكتر.</h2><p>متجر واحد لمنتجات من فئات مختلفة. المنتجات والأسعار المعروضة حاليًا بيانات تجريبية قابلة للتعديل.</p></section>
-  </main>
-  <aside class="cart-panel" id="cartPanel" aria-label="سلة التسوق" aria-hidden="true">
-    <div class="cart-head"><h2>سلة التسوق</h2><button id="closeCart" aria-label="إغلاق">✕</button></div>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="cart-foot"><div class="total"><span>الإجمالي</span><strong id="cartTotal">0 ج.م</strong></div><button class="checkout" id="checkoutBtn">إتمام الطلب</button><p class="note">واجهة تجريبية. يلزم ربط بوابة دفع أو واتساب قبل استقبال طلبات حقيقية.</p></div>
-  </aside>
-  <div class="scrim" id="scrim"></div>
-  <footer>© <span id="year"></span> NOVEX. جميع الحقوق محفوظة.</footer>
-  <script src="app.js"></script>
+    </div>
+    <div class="results-line"><span id="resultCount"></span><span>الأسعار بالجنيه المصري</span></div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="story" id="story"><div class="story-mark">N<span>X</span></div><div><p class="kicker">عن NOVEX</p><h2>تسوّق من غير تعقيد.</h2><p>NOVEX متجر بيجمع منتجات من فئات مختلفة في مكان واحد. بنضيف اختيارات جديدة باستمرار، وهدفنا إنك تلاقي اللي محتاجه بسهولة.</p></div></section>
+</main>
+<footer><a class="footer-brand" href="#">NOVEX</a><span>© <span id="year"></span> NOVEX</span><a href="#products">العودة للمنتجات ↑</a></footer>
+
+<aside class="cart-drawer" id="cartPanel" aria-label="سلة المشتريات" aria-hidden="true">
+  <div class="drawer-head"><div><p class="kicker">مشترياتك</p><h2>سلة المشتريات</h2></div><button id="closeCart" class="close-cart" type="button" aria-label="إغلاق">×</button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="drawer-bottom"><div class="total-row"><span>الإجمالي</span><strong id="cartTotal">0 ج.م</strong></div><button class="checkout" id="checkoutBtn" type="button">متابعة الطلب</button><p class="checkout-note">الطلب والدفع الإلكتروني غير مفعّلين في النسخة الحالية.</p></div>
+</aside>
+<div class="overlay" id="scrim"></div>
+<script src="app.js"></script>
 </body>
 </html>
