@@ -8,41 +8,50 @@ const categories=[
 { id:"home",name:"المنزل والمطبخ",icon:"⌂",description:"كل احتياجات البيت" },
 { id:"appliances",name:"أجهزة منزلية",icon:"▣",description:"أجهزة للمنزل" },
 { id:"sports",name:"رياضة ولياقة",icon:"◉",description:"معدات وملابس رياضية" },
-{ id:"gifts",name:"هدايا ومناسبات",icon:"✳",description:"هدايا لكل مناسبة" }
+{ id:"gifts",name:"هدايا ومناسبات",icon:"✳",description:"هدايا لكل مناسبة"}
 ];
-const API_CONFIG={enabled:false,baseUrl:"",productsPath:"/products"};
 const $=selector=>document.querySelector(selector);
-let selectedCategory="all";
+let selectedCategory="all",allProducts=[],supabaseClient=null;
 function renderCategories(){
- $("#categoryGrid").innerHTML=categories.map(category=>`<button type="button" class="category-card" data-category="${category.id}"><span class="category-icon" aria-hidden="true">${category.icon}</span><span class="category-name">${category.name}</span><span class="category-meta"><span>${category.description}</span><b>←</b></span></button>`).join("");
+ $("#categoryGrid").innerHTML=categories.map(c=>`<button type="button" class="category-card" data-category="${c.id}"><span class="category-icon" aria-hidden="true">${c.icon}</span><span class="category-name">${c.name}</span><span class="category-meta"><span>${c.description}</span><b>←</b></span></button>`).join("");
 }
 function selectCategory(id){
  selectedCategory=id;
  document.querySelectorAll(".category-card").forEach(card=>card.classList.toggle("selected",card.dataset.category===id));
- const category=categories.find(item=>item.id===id);
- $("#catalogTitle").textContent=category?category.name:"الكتالوج";
- $("#catalogHint").textContent=category?"عرض منتجات القسم عند ربط مصدر المنتجات.":"المنتجات هتظهر هنا عند ربط مصدر المنتجات.";
+ const c=categories.find(x=>x.id===id);
+ $("#catalogTitle").textContent=c?c.name:"الكتالوج";
+ $("#catalogHint").textContent=c?"المنتجات المتاحة في القسم":"كل المنتجات المتاحة";
+ renderProducts();
  $("#catalog").scrollIntoView({behavior:"smooth"});
- renderEmptyState();
 }
-function renderEmptyState(){
- $("#productGrid").hidden=true;
- $("#productGrid").innerHTML="";
- $("#productState").hidden=false;
+function safe(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderProducts(){
+ const query=$("#searchInput").value.trim().toLocaleLowerCase();
+ const filtered=allProducts.filter(p=>(selectedCategory==="all"||p.category_id===selectedCategory)&&(!query||(p.name+" "+(p.description||"")).toLocaleLowerCase().includes(query)));
+ $("#productState").hidden=filtered.length>0;
+ $("#productGrid").hidden=filtered.length===0;
+ if(!filtered.length){
+   $("#productState").querySelector("h3").textContent=allProducts.length?"مفيش منتجات مطابقة":"لسه مفيش منتجات مضافة";
+   $("#productState").querySelector("p").textContent=allProducts.length?"جرّب كلمة بحث تانية أو اختار قسم مختلف.":"المنتجات اللي هتضيفها من لوحة الإدارة هتظهر هنا تلقائيًا.";
+   $("#productGrid").innerHTML="";return;
+ }
+ $("#productGrid").innerHTML=filtered.map(p=>{
+   const category=categories.find(c=>c.id===p.category_id)?.name||"NOVEX";
+   const image=p.image_url? `<img src="${safe(p.image_url)}" alt="${safe(p.name)}" loading="lazy" onerror="this.parentElement.textContent='NOVEX'">`:"NOVEX";
+   return `<article class="product-card"><div class="product-image">${image}</div><div class="product-info"><span class="product-category">${safe(category)}</span><h3>${safe(p.name)}</h3><strong>${Number(p.price).toFixed(2)} جنيه</strong>${p.compare_at_price? ` <del>${Number(p.compare_at_price).toFixed(2)} جنيه</del>`:""}<p>${safe(p.description||"")}</p></div></article>`;
+ }).join("");
 }
 async function loadProducts(){
- renderEmptyState();
- if(!API_CONFIG.enabled||!API_CONFIG.baseUrl)return;
- // The API integration is intentionally disabled until a real provider and response schema are configured.
+ if(!window.NOVEX_CONFIG?.supabaseUrl||!window.NOVEX_CONFIG?.supabaseAnonKey||!window.supabase){$("#catalogHint").textContent="الكتالوج جاهز، وسيظهر عند توصيل قاعدة البيانات.";return;}
+ supabaseClient=window.supabase.createClient(window.NOVEX_CONFIG.supabaseUrl,window.NOVEX_CONFIG.supabaseAnonKey);
+ const {data,error}=await supabaseClient.from("products").select("id,name,description,category_id,price,compare_at_price,image_url").eq("is_active",true).order("created_at",{ascending:false});
+ if(error){$("#catalogHint").textContent="تعذر تحميل المنتجات حاليًا.";return;}
+ allProducts=data||[];renderProducts();
 }
-$("#categoryGrid").addEventListener("click",event=>{
- const card=event.target.closest("[data-category]");if(card)selectCategory(card.dataset.category);
-});
-$("#clearFilter").addEventListener("click",()=>{selectedCategory="all";document.querySelectorAll(".category-card").forEach(card=>card.classList.remove("selected"));$("#catalogTitle").textContent="الكتالوج";$("#catalogHint").textContent="المنتجات هتظهر هنا عند ربط مصدر المنتجات.";renderEmptyState();});
-$("#searchInput").addEventListener("input",()=>{if(!$("#searchInput").value.trim()){renderEmptyState();return;}$("#productState").querySelector("h3").textContent="الكتالوج فاضي حاليًا";$("#productState").querySelector("p").textContent="مفيش منتجات مضافة للبحث فيها. أضف منتجات من مصدر المنتجات بعد ربط الـ API.";});
-$("#menuToggle").addEventListener("click",()=>$("#mainNav")?.classList.toggle("open"));
+$("#categoryGrid").addEventListener("click",e=>{const card=e.target.closest("[data-category]");if(card)selectCategory(card.dataset.category);});
+$("#clearFilter").addEventListener("click",()=>{selectedCategory="all";document.querySelectorAll(".category-card").forEach(c=>c.classList.remove("selected"));$("#catalogTitle").textContent="الكتالوج";$("#catalogHint").textContent="كل المنتجات المتاحة";renderProducts();});
+$("#searchInput").addEventListener("input",renderProducts);
 const nav=document.querySelector(".main-nav");
 $("#menuToggle").addEventListener("click",()=>nav.classList.toggle("open"));
-nav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>nav.classList.remove("open")));
-$("#year").textContent=new Date().getFullYear();
-renderCategories();loadProducts();
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+$("#year").textContent=new Date().getFullYear();renderCategories();loadProducts();
