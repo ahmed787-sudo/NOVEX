@@ -15,3 +15,29 @@ footer{border-top:1px solid var(--line);padding:25px 7.5%;display:flex;align-ite
 @media(max-width:650px){.site-header{height:67px;padding:0 5%}.wordmark{font-size:24px}.menu-trigger{display:block}.main-nav{display:none;position:absolute;top:66px;right:0;left:0;background:var(--paper);padding:17px 6%;border-bottom:1px solid var(--line);flex-direction:column;gap:17px}.main-nav.open{display:flex}.hero{min-height:420px;padding:60px 7% 80px}.hero h1{font-size:47px}.hero-text{font-size:15px;max-width:310px}.hero-visual{width:220px;height:220px;left:-65px;top:66%;opacity:.35}.visual-core{font-size:85px}.orbit-one{inset:20px}.orbit-two{inset:45px}.visual-caption{font-size:7px;bottom:22px}.hero-foot{left:7%;right:7%;font-size:10px}
 .categories-section,.catalog-section{padding:52px 5% 25px}.section-heading{align-items:start;flex-direction:column;gap:8px}.section-heading h2{font-size:30px}.section-heading>p{font-size:13px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.category-card{min-height:130px;padding:14px}.category-name{font-size:15px}.category-icon{font-size:23px}.catalog-section{margin-top:35px;padding-top:50px;padding-bottom:55px}.catalog-tools{align-items:stretch;flex-direction:column}.search-box{max-width:none}.clear-filter{align-self:flex-start}.product-state{min-height:220px;padding:22px}.product-state h3{font-size:19px}.product-state p{font-size:13px}.about-section{margin:50px 5%;padding:27px 22px;gap:22px;align-items:flex-start;flex-direction:column}.about-mark{font-size:43px}.about-section h2{font-size:25px}.about-section p:last-child{font-size:13px}footer{padding:20px 5%;font-size:11px}}
 @media(max-width:360px){.category-grid{grid-template-columns:1fr 1fr}.category-card{min-height:120px;padding:11px}.hero h1{font-size:41px}}
+
+/* NOVEX dark storefront finish */
+:root{--ink:#101512;--green:#304b3d;--mint:#26362d;--lime:#d2df91;--sand:#151b17;--paper:#101512;--muted:#a0aaa1;--line:#303b33;--white:#f4f5ef}
+body{background:#101512;color:#f4f5ef}
+.site-header{background:#101512;border-color:#303b33}
+.main-nav{color:#c0c9c1}
+.hero{background:radial-gradient(ellipse at 78% 48%,#263d2e 0,transparent 42%),#0b100d}
+.categories-section{background:#101512}
+.category-card{background:#1d3025!important;border-color:#2c4435!important;color:#f4f5ef}
+.category-card:nth-child(4n+2){background:#292d22!important;border-color:#454633!important}
+.category-card:nth-child(4n+3){background:#202d27!important}
+.category-card:nth-child(4n){background:#252c25!important}
+.category-card:hover,.category-card.selected{border-color:#d2df91!important;box-shadow:0 10px 25px #0005}
+.category-icon,.category-meta b{color:#d2df91}
+.category-meta{color:#aeb9af}
+.catalog-section{background:#151d18}
+.search-box{background:#202a23;border-color:#354239}
+.search-box input{color:#f4f5ef}
+.search-box input::placeholder{color:#8e9b91}
+.product-state{background:#1a241d;border-color:#526454}
+.state-symbol{background:#2b3c2e;color:#d2df91}
+.product-state p,.about-section p:last-child{color:#b2bdb3}
+.about-section{background:#1b2920;border-color:#2b3c30}
+footer{border-color:#303b33;color:#a0aaa1}
+.footer-logo{color:#f4f5ef}
+@media(max-width:650px){.main-nav{background:#101512;border-color:#303b33}}
