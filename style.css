@@ -41,3 +41,11 @@ body{background:#101512;color:#f4f5ef}
 footer{border-color:#303b33;color:#a0aaa1}
 .footer-logo{color:#f4f5ef}
 @media(max-width:650px){.main-nav{background:#101512;border-color:#303b33}}
+
+/* Live catalog cards */
+.product-card{background:#1b261f;border-color:#354239;color:#f4f5ef}
+.product-image{background:#25332a;color:#d2df91;font:900 28px Arial,sans-serif}
+.product-info h3{color:#f4f5ef}
+.product-info strong{color:#d2df91;font-size:17px}
+.product-info del{color:#9aa69b;font-size:12px}
+.product-info p{color:#aeb9af;font-size:13px;line-height:1.7}
