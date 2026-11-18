@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101512"><title>إدارة NOVEX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+<header class="site-header admin-header"><a class="wordmark" href="index.html">NOVE<span>X</span></a><span class="admin-label">لوحة الإدارة</span><a href="index.html" class="back-store">عرض المتجر ↗</a></header>
+<main class="admin-main">
+<section class="admin-login" id="loginPanel">
+<p class="eyebrow">NOVEX CONTROL CENTER</p><h1>دخول الإدارة</h1><p>هذه الصفحة مخصصة لصاحب المتجر فقط.</p>
+<form id="loginForm"><label>البريد الإلكتروني<input id="adminEmail" type="email" required autocomplete="username"></label><label>كلمة المرور<input id="adminPassword" type="password" required autocomplete="current-password"></label><button class="admin-primary" type="submit">تسجيل الدخول</button></form><p class="admin-message" id="loginMessage" role="status"></p>
+</section>
+<section id="dashboard" hidden>
+<div class="admin-title-row"><div><p class="eyebrow">STORE MANAGEMENT</p><h1>إدارة المنتجات</h1><p>أضف المنتجات والأسعار والصور، وتتحكم في ظهورها بالمتجر.</p></div><button id="logoutButton" class="admin-secondary">تسجيل الخروج</button></div>
+<div class="admin-stats"><article><span>إجمالي المنتجات</span><strong id="totalProducts">0</strong></article><article><span>المنتجات الظاهرة</span><strong id="activeProducts">0</strong></article></div>
+<div class="admin-columns">
+<form id="productForm" class="admin-card">
+<h2 id="formTitle">إضافة منتج جديد</h2><input id="productId" type="hidden">
+<label>اسم المنتج<input id="productName" maxlength="180" required></label>
+<label>القسم<select id="productCategory" required></select></label>
+<div class="admin-two"><label>السعر بالجنيه<input id="productPrice" type="number" min="0" step="0.01" required></label><label>السعر قبل الخصم (اختياري)<input id="productComparePrice" type="number" min="0" step="0.01"></label></div>
+<label>الكمية المتاحة<input id="productStock" type="number" min="0" step="1" value="0" required></label>
+<label>رابط صورة المنتج<input id="productImage" type="url" placeholder="https://..." ></label>
+<label>وصف المنتج<textarea id="productDescription" rows="4"></textarea></label>
+<label class="admin-check"><input id="productActive" type="checkbox" checked> إظهار المنتج في المتجر</label>
+<div class="admin-actions"><button class="admin-primary" type="submit" id="saveProduct">حفظ المنتج</button><button class="admin-secondary" type="button" id="resetForm">تفريغ الحقول</button></div><p class="admin-message" id="formMessage" role="status"></p>
+</form>
+<section class="admin-card"><div class="products-head"><h2>المنتجات المسجلة</h2><button id="refreshProducts" class="admin-secondary" type="button">تحديث</button></div><div id="adminProductList" class="admin-product-list"><p>سجّل الدخول لعرض المنتجات.</p></div></section>
+</div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script><script src="admin.js"></script>
+</body></html>
