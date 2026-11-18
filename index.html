@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111111">
-  <title>NOVEX | اختيارات تستاهل</title>
-  <meta name="description" content="NOVEX - منتجات مختارة للاستخدام اليومي.">
+  <meta name="theme-color" content="#17251f">
+  <meta name="description" content="NOVEX - متجر متعدد الأقسام لاحتياجاتك اليومية.">
+  <title>NOVEX | كل اختياراتك في مكان واحد</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,48 +13,42 @@
 </head>
 <body>
 <header class="site-header">
-  <a class="wordmark" href="#" aria-label="NOVEX">NOVE<span>X</span></a>
-  <nav class="main-nav"><a href="#products">كل المنتجات</a><a href="#story">عن المتجر</a></nav>
-  <button class="cart-trigger" id="cartToggle" type="button"><span>سلة المشتريات</span><b id="cartCount">0</b></button>
+  <a class="wordmark" href="#" aria-label="NOVEX الرئيسية">NOVE<span>X</span></a>
+  <nav class="main-nav" aria-label="القائمة الرئيسية">
+    <a href="#categories">الأقسام</a><a href="#catalog">الكتالوج</a><a href="#about">عن NOVEX</a>
+  </nav>
+  <button class="menu-trigger" id="menuToggle" type="button" aria-label="فتح القائمة">☰</button>
 </header>
 <main>
   <section class="hero">
-    <div class="hero-content">
-      <p class="kicker">NOVEX / ONLINE STORE</p>
-      <h1>اختيارات يومك،<br><em>في مكان واحد.</em></h1>
-      <p class="hero-description">منتجات متنوعة للاستخدام اليومي. تصفّح براحتك واختار اللي يناسبك.</p>
-      <a class="hero-link" href="#products">تصفّح المنتجات <span>←</span></a>
+    <div class="hero-copy">
+      <p class="eyebrow">NOVEX · THE EVERYDAY MARKET</p>
+      <h1>كل اللي تحتاجه،<br><span>تبدأ تلاقيه هنا.</span></h1>
+      <p class="hero-text">من التكنولوجيا والبيت، للموضة والعناية. أقسام متنوعة في تجربة تسوّق واحدة.</p>
+      <a href="#categories" class="hero-cta">اكتشف الأقسام <b>←</b></a>
     </div>
-    <div class="hero-art" aria-hidden="true"><div class="art-ring"></div><span class="art-n">N</span><span class="art-x">X</span><small>NEW<br>SELECTION</small></div>
-    <div class="hero-index">01 <span>/</span> 04</div>
+    <div class="hero-visual" aria-hidden="true"><div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div><div class="visual-core">N<span>X</span></div><div class="visual-caption">A PLACE FOR<br>EVERY CHOICE</div></div>
+    <div class="hero-foot"><span>اختيارات متعددة. مكان واحد.</span><span>01 / NOVEX</span></div>
   </section>
 
-  <section class="catalog" id="products">
-    <div class="section-top"><div><p class="kicker">تسوّق حسب احتياجك</p><h2>المنتجات</h2></div><p class="catalog-note">اختار القسم أو ابحث عن منتج بالاسم</p></div>
+  <section class="categories-section" id="categories">
+    <div class="section-heading"><div><p class="eyebrow">تصفّح براحتك</p><h2>الأقسام الرئيسية</h2></div><p>اختار القسم اللي بتدور فيه</p></div>
+    <div class="category-grid" id="categoryGrid"></div>
+  </section>
+
+  <section class="catalog-section" id="catalog">
+    <div class="section-heading"><div><p class="eyebrow">NOVEX CATALOG</p><h2 id="catalogTitle">الكتالوج</h2></div><p id="catalogHint">المنتجات هتظهر هنا عند ربط مصدر المنتجات.</p></div>
     <div class="catalog-tools">
-      <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="بتدور على إيه؟" aria-label="ابحث عن منتج"></label>
-      <div class="filters" id="filters">
-        <button class="filter active" data-category="الكل">الكل</button>
-        <button class="filter" data-category="إلكترونيات">إلكترونيات</button>
-        <button class="filter" data-category="ملابس">ملابس</button>
-        <button class="filter" data-category="إكسسوارات">إكسسوارات</button>
-        <button class="filter" data-category="منزل">للمنزل</button>
-      </div>
+      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن منتج أو ماركة..." aria-label="البحث في المنتجات"></label>
+      <button type="button" class="clear-filter" id="clearFilter">عرض كل الأقسام</button>
     </div>
-    <div class="results-line"><span id="resultCount"></span><span>الأسعار بالجنيه المصري</span></div>
-    <div class="product-grid" id="productGrid"></div>
+    <div class="product-state" id="productState"><div class="state-symbol">＋</div><h3>لسه مفيش منتجات مضافة</h3><p>الأقسام جاهزة. المنتجات هتظهر هنا لما توصل NOVEX بمصدر المنتجات وتختار اللي تضيفه للمتجر.</p></div>
+    <div class="product-grid" id="productGrid" hidden></div>
   </section>
 
-  <section class="story" id="story"><div class="story-mark">N<span>X</span></div><div><p class="kicker">عن NOVEX</p><h2>تسوّق من غير تعقيد.</h2><p>NOVEX متجر بيجمع منتجات من فئات مختلفة في مكان واحد. بنضيف اختيارات جديدة باستمرار، وهدفنا إنك تلاقي اللي محتاجه بسهولة.</p></div></section>
+  <section class="about-section" id="about"><div class="about-mark">NOVEX<span>.</span></div><div><p class="eyebrow">ABOUT THE STORE</p><h2>من احتياجات البيت<br>لآخر اختياراتك.</h2><p>NOVEX متجر متعدد الأقسام، معمول علشان يجمع اختيارات مختلفة في مكان واحد. بنجهّز الكتالوج علشان المنتجات تتضاف بعد مراجعتها، مش بشكل تلقائي.</p></div></section>
 </main>
-<footer><a class="footer-brand" href="#">NOVEX</a><span>© <span id="year"></span> NOVEX</span><a href="#products">العودة للمنتجات ↑</a></footer>
-
-<aside class="cart-drawer" id="cartPanel" aria-label="سلة المشتريات" aria-hidden="true">
-  <div class="drawer-head"><div><p class="kicker">مشترياتك</p><h2>سلة المشتريات</h2></div><button id="closeCart" class="close-cart" type="button" aria-label="إغلاق">×</button></div>
-  <div id="cartItems" class="cart-items"></div>
-  <div class="drawer-bottom"><div class="total-row"><span>الإجمالي</span><strong id="cartTotal">0 ج.م</strong></div><button class="checkout" id="checkoutBtn" type="button">متابعة الطلب</button><p class="checkout-note">الطلب والدفع الإلكتروني غير مفعّلين في النسخة الحالية.</p></div>
-</aside>
-<div class="overlay" id="scrim"></div>
+<footer><a class="footer-logo" href="#">NOVEX</a><span>© <span id="year"></span> NOVEX</span><a href="#top">بداية الصفحة ↑</a></footer>
 <script src="app.js"></script>
 </body>
 </html>
