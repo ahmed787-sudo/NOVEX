@@ -1,22 +1,14 @@
 const categories=[
-{ id:"electronics",name:"الإلكترونيات",icon:"⌁",description:"موبايلات وأجهزة وتقنيات" },
+{ id:"electronics",name:"الإلكترونيات",icon:"⌁",description:"أجهزة وتقنيات" },
 { id:"mobiles",name:"موبايلات وتابلت",icon:"▯",description:"هواتف وملحقاتها" },
-{ id:"computers",name:"كمبيوتر ولابتوب",icon:"▱",description:"أجهزة وملحقات الكمبيوتر" },
-{ id:"fashion",name:"ملابس وأزياء",icon:"◇",description:"ملابس لكل أفراد الأسرة" },
-{ id:"shoes",name:"أحذية وشنط",icon:"⌑",description:"أحذية وحقائب متنوعة" },
-{ id:"beauty",name:"جمال وعناية",icon:"✧",description:"عناية شخصية ومستحضرات" },
-{ id:"home",name:"المنزل والمطبخ",icon:"⌂",description:"مستلزمات البيت والمطبخ" },
-{ id:"furniture",name:"أثاث وديكور",icon:"▤",description:"أثاث ولمسات للمنزل" },
-{ id:"appliances",name:"أجهزة منزلية",icon:"▣",description:"أجهزة كهربائية للبيت" },
+{ id:"computers",name:"كمبيوتر ولابتوب",icon:"▱",description:"أجهزة وملحقات" },
+{ id:"fashion",name:"ملابس وأزياء",icon:"◇",description:"ستايلات متنوعة" },
+{ id:"shoes",name:"أحذية وشنط",icon:"⌑",description:"أحذية وحقائب" },
+{ id:"beauty",name:"جمال وعناية",icon:"✧",description:"عناية شخصية" },
+{ id:"home",name:"المنزل والمطبخ",icon:"⌂",description:"كل احتياجات البيت" },
+{ id:"appliances",name:"أجهزة منزلية",icon:"▣",description:"أجهزة للمنزل" },
 { id:"sports",name:"رياضة ولياقة",icon:"◉",description:"معدات وملابس رياضية" },
-{ id:"toys",name:"ألعاب وأطفال",icon:"☆",description:"ألعاب ومستلزمات الصغار" },
-{ id:"baby",name:"مستلزمات الأطفال",icon:"♧",description:"احتياجات الطفل والأم" },
-{ id:"books",name:"كتب ومكتبات",icon:"▥",description:"كتب وأدوات مكتبية" },
-{ id:"automotive",name:"سيارات وإكسسوارات",icon:"⌕",description:"مستلزمات وعناية بالسيارة" },
-{ id:"pets",name:"مستلزمات الحيوانات",icon:"♡",description:"احتياجات الحيوانات الأليفة" },
-{ id:"grocery",name:"سوبر ماركت",icon:"▦",description:"منتجات يومية وغذائية" },
-{ id:"office",name:"مكتب وأعمال",icon:"▧",description:"أدوات ومستلزمات العمل" },
-{ id:"gifts",name:"هدايا ومناسبات",icon:"✳",description:"هدايا واختيارات للمناسبات" }
+{ id:"gifts",name:"هدايا ومناسبات",icon:"✳",description:"هدايا لكل مناسبة" }
 ];
 const API_CONFIG={enabled:false,baseUrl:"",productsPath:"/products"};
 const $=selector=>document.querySelector(selector);
