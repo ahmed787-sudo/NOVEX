@@ -27,8 +27,8 @@ function render(){
  }).join("");
 }
 async function load(){
- if(!window.VEX_CONFIG?.supabaseUrl||!window.VEX_CONFIG?.supabaseAnonKey||!window.supabase){$("#catalogHint").textContent="قاعدة البيانات غير متصلة حاليًا.";return;}
- const client=window.supabase.createClient(window.VEX_CONFIG.supabaseUrl,window.VEX_CONFIG.supabaseAnonKey);
+ if(!window.NOVEX_CONFIG?.supabaseUrl||!window.NOVEX_CONFIG?.supabaseAnonKey||!window.supabase){$("#catalogHint").textContent="قاعدة البيانات غير متصلة حاليًا.";return;}
+ const client=window.supabase.createClient(window.NOVEX_CONFIG.supabaseUrl,window.NOVEX_CONFIG.supabaseAnonKey);
  const {data,error}=await client.from("products").select("id,name,description,category_id,price,compare_at_price,image_url").eq("is_active",true).eq("category_id",category.id).order("created_at",{ascending:false});
  if(error){showMessage("تعذر تحميل المنتجات","راجع اتصال قاعدة البيانات ثم حاول مرة أخرى.");return;}
  products=data||[];render();
