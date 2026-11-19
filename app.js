@@ -13,7 +13,7 @@ const categories=[
 const $=selector=>document.querySelector(selector);
 let allProducts=[];
 function renderCategories(){
- $("#categoryGrid").innerHTML=categories.map(c=>`<a class="category-card" href="category.html?category=${encodeURIComponent(c.id)}"><span class="category-icon" aria-hidden="true">${c.icon}</span><span class="category-name">${c.name}</span><span class="category-meta"><span>${c.description}</span><b>←</b></span></a>`).join("");
+ $("#categoryGrid").innerHTML=categories.map(c=>`<a class="category-card" href="${c.id}.html"><span class="category-icon" aria-hidden="true">${c.icon}</span><span class="category-name">${c.name}</span><span class="category-meta"><span>${c.description}</span><b>←</b></span></a>`).join("");
 }
 function safe(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function renderProducts(){
