@@ -22,19 +22,19 @@ function render(){
  if(!filtered.length){showMessage(products.length?"مفيش منتجات مطابقة":"لسه مفيش منتجات مضافة",products.length?"جرّب كلمة بحث تانية.":"المنتجات اللي هتضيفها من لوحة الإدارة للقسم ده هتظهر هنا تلقائيًا.");$("#productGrid").innerHTML="";return;}
  $("#productState").hidden=true;$("#productGrid").hidden=false;
  $("#productGrid").innerHTML=filtered.map(p=>{
-  const image=p.image_url?`<img src="${safe(p.image_url)}" alt="${safe(p.name)}" loading="lazy" onerror="this.parentElement.textContent='NOVEX'">`:"NOVEX";
+  const image=p.image_url?`<img src="${safe(p.image_url)}" alt="${safe(p.name)}" loading="lazy" onerror="this.parentElement.textContent='VEX'">`:"VEX";
   return `<article class="product-card"><div class="product-image">${image}</div><div class="product-info"><span class="product-category">${safe(category.name)}</span><h3>${safe(p.name)}</h3><strong>${Number(p.price).toFixed(2)} جنيه</strong>${p.compare_at_price?` <del>${Number(p.compare_at_price).toFixed(2)} جنيه</del>`:""}<p>${safe(p.description||"")}</p></div></article>`;
  }).join("");
 }
 async function load(){
- if(!window.NOVEX_CONFIG?.supabaseUrl||!window.NOVEX_CONFIG?.supabaseAnonKey||!window.supabase){$("#catalogHint").textContent="قاعدة البيانات غير متصلة حاليًا.";return;}
- const client=window.supabase.createClient(window.NOVEX_CONFIG.supabaseUrl,window.NOVEX_CONFIG.supabaseAnonKey);
+ if(!window.VEX_CONFIG?.supabaseUrl||!window.VEX_CONFIG?.supabaseAnonKey||!window.supabase){$("#catalogHint").textContent="قاعدة البيانات غير متصلة حاليًا.";return;}
+ const client=window.supabase.createClient(window.VEX_CONFIG.supabaseUrl,window.VEX_CONFIG.supabaseAnonKey);
  const {data,error}=await client.from("products").select("id,name,description,category_id,price,compare_at_price,image_url").eq("is_active",true).eq("category_id",category.id).order("created_at",{ascending:false});
  if(error){showMessage("تعذر تحميل المنتجات","راجع اتصال قاعدة البيانات ثم حاول مرة أخرى.");return;}
  products=data||[];render();
 }
-if(!category){document.title="القسم غير موجود | NOVEX";$("#categoryTitle").textContent="القسم غير موجود";$("#categoryDescription").textContent="ارجع إلى الصفحة الرئيسية واختر قسمًا من الأقسام المتاحة.";showMessage("القسم غير موجود","يمكنك الرجوع إلى كل الأقسام واختيار القسم المطلوب.");}
-else{document.title=category.name+" | NOVEX";$("#categoryTitle").textContent=category.name;$("#catalogTitle").textContent="منتجات "+category.name;$("#categoryDescription").textContent=category.description;load();}
+if(!category){document.title="القسم غير موجود | VEX";$("#categoryTitle").textContent="القسم غير موجود";$("#categoryDescription").textContent="ارجع إلى الصفحة الرئيسية واختر قسمًا من الأقسام المتاحة.";showMessage("القسم غير موجود","يمكنك الرجوع إلى كل الأقسام واختيار القسم المطلوب.");}
+else{document.title=category.name+" | VEX";$("#categoryTitle").textContent=category.name;$("#catalogTitle").textContent="منتجات "+category.name;$("#categoryDescription").textContent=category.description;load();}
 $("#searchInput").addEventListener("input",render);
 const nav=document.querySelector(".main-nav");
 $("#menuToggle").addEventListener("click",()=>{const open=nav.classList.toggle("open");$("#menuToggle").setAttribute("aria-expanded",String(open));});
