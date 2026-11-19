@@ -152,3 +152,62 @@ a.category-card{display:flex}
  .menu-category-card strong{font-size:13px}
  .hero-cta{cursor:pointer}
 }
+
+
+/* Mobile layout fix: keep VEX readable and prevent oversized/overlapping text */
+@media (max-width: 650px) {
+  html, body { width:100%; max-width:100%; overflow-x:hidden; }
+  .site-header { min-height:62px; height:auto; padding:12px 5%; }
+  .hero {
+    min-height: unset;
+    padding: 54px 6% 76px;
+    display:block;
+  }
+  .hero-copy { width:100%; max-width:100%; }
+  .hero .eyebrow { font-size:9px; letter-spacing:1.4px; margin-bottom:13px; }
+  .hero h1 {
+    font-size:clamp(31px, 8.2vw, 39px);
+    line-height:1.45;
+    letter-spacing:0;
+    overflow-wrap:anywhere;
+  }
+  .hero-text {
+    max-width:100%;
+    font-size:14px;
+    line-height:1.9;
+    margin:15px 0 23px;
+  }
+  .hero-cta { font-size:14px; gap:14px; }
+  .hero-visual {
+    width:145px;
+    height:145px;
+    left:-48px;
+    top:auto;
+    bottom:42px;
+    transform:none;
+    opacity:.16;
+    pointer-events:none;
+  }
+  .visual-core { font-size:52px; letter-spacing:-4px; }
+  .orbit-one { inset:14px; }
+  .orbit-two { inset:30px; }
+  .visual-caption { display:none; }
+  .hero-foot { left:6%; right:6%; bottom:17px; font-size:9px; gap:12px; }
+  .categories-section, .catalog-section { padding-left:5%; padding-right:5%; }
+  .section-heading h2 { font-size:25px; line-height:1.4; }
+  .category-grid, .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .category-card { min-width:0; overflow-wrap:anywhere; }
+  .about-section { margin:38px 5%; padding:24px 18px; gap:16px; }
+  .about-section h2 { font-size:23px; line-height:1.5; }
+  .about-section p:last-child { font-size:13px; line-height:1.9; }
+  .category-menu { max-width:100%; }
+}
+@media (max-width: 380px) {
+  .hero { padding:46px 5% 72px; }
+  .hero h1 { font-size:clamp(28px, 8vw, 32px); }
+  .hero-text { font-size:13px; }
+  .hero-foot { font-size:8px; }
+  .section-heading h2 { font-size:22px; }
+  .category-card { padding:10px; }
+  .category-name { font-size:13px; }
+}
