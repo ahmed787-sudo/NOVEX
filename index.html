@@ -15,25 +15,21 @@
 <header class="site-header">
   <a class="wordmark" href="#" aria-label="NOVEX الرئيسية">NOVE<span>X</span></a>
   <nav class="main-nav" id="mainNav" aria-label="القائمة الرئيسية">
-    <a href="#categories">الأقسام</a><a href="#about">عن NOVEX</a>
+    <button class="nav-category-toggle" id="categoriesToggle" type="button" aria-expanded="false">الأقسام <span>⌄</span></button><a href="#about">عن NOVEX</a>
   </nav>
   <button class="menu-trigger" id="menuToggle" type="button" aria-label="فتح القائمة">☰</button>
 </header>
+<div class="category-menu" id="categoryMenu" hidden aria-label="أقسام المتجر"></div>
 <main>
   <section class="hero">
     <div class="hero-copy">
       <p class="eyebrow">NOVEX · THE EVERYDAY MARKET</p>
       <h1>اللي نفسك فيه،<br><span>هتلاقيه هنا.</span></h1>
       <p class="hero-text">اختيارات أكتر، تفاصيل تفرق، وتجربة تسوّق تخليك تلاقي اللي يناسبك من غير لف كتير.</p>
-      <a href="#categories" class="hero-cta">اكتشف الأقسام <b>←</b></a>
+      <a href="#" id="heroCategoriesLink" class="hero-cta">اكتشف الأقسام <b>←</b></a>
     </div>
     <div class="hero-visual" aria-hidden="true"><div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div><div class="visual-core">N<span>X</span></div><div class="visual-caption">A PLACE FOR<br>EVERY CHOICE</div></div>
     <div class="hero-foot"><span>اختيارات متعددة. مكان واحد.</span><span>01 / NOVEX</span></div>
-  </section>
-
-  <section class="categories-section" id="categories">
-    <div class="section-heading"><div><p class="eyebrow">تصفّح براحتك</p><h2>الأقسام الرئيسية</h2></div><p>اختار القسم اللي بتدور فيه</p></div>
-    <div class="category-grid" id="categoryGrid"></div>
   </section>
 
   <section class="about-section" id="about"><div class="about-mark">NOVEX<span>.</span></div><div><p class="eyebrow">ABOUT THE STORE</p><h2>من احتياجات البيت<br>لآخر اختياراتك.</h2><p>NOVEX متجر متعدد الأقسام، معمول علشان يجمع اختيارات مختلفة في مكان واحد. بنجهّز الكتالوج علشان المنتجات تتضاف بعد مراجعتها، مش بشكل تلقائي.</p></div></section>
