@@ -11,14 +11,26 @@ const categories=[
 { id:"gifts",name:"هدايا ومناسبات",icon:"✳",description:"هدايا لكل مناسبة"}
 ];
 const $=selector=>document.querySelector(selector);
-function renderCategories(){
- const grid=$("#categoryGrid");
- if(!grid)return;
- grid.innerHTML=categories.map(c=>`<a class="category-card" href="${c.id}.html" aria-label="افتح قسم ${c.name}"><span class="category-icon" aria-hidden="true">${c.icon}</span><span class="category-name">${c.name}</span><span class="category-meta"><span>${c.description}</span><b>←</b></span></a>`).join("");
-}
 const nav=document.querySelector(".main-nav");
+const menu=$("#categoryMenu");
+const categoriesToggle=$("#categoriesToggle");
+function renderCategories(){
+ if(!menu)return;
+ menu.innerHTML=categories.map(c=>`<a class="menu-category-card" href="${c.id}.html"><span>${c.icon}</span><strong>${c.name}</strong><small>${c.description}</small></a>`).join("");
+}
+function setCategoryMenu(open){
+ if(!menu||!categoriesToggle)return;
+ menu.hidden=!open;
+ categoriesToggle.setAttribute("aria-expanded",String(open));
+ categoriesToggle.classList.toggle("active",open);
+}
+if(categoriesToggle)categoriesToggle.addEventListener("click",()=>setCategoryMenu(menu.hidden));
+const heroLink=$("#heroCategoriesLink");
+if(heroLink)heroLink.addEventListener("click",event=>{event.preventDefault();setCategoryMenu(menu.hidden);if(menu.hidden===false)menu.scrollIntoView({behavior:"smooth",block:"start"});});
 const toggle=$("#menuToggle");
 if(toggle&&nav)toggle.addEventListener("click",()=>{const open=nav.classList.toggle("open");toggle.setAttribute("aria-expanded",String(open));});
 if(nav)nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+if(menu)menu.addEventListener("click",event=>{if(event.target.closest("a"))setCategoryMenu(false);});
+document.addEventListener("click",event=>{if(menu&&!menu.hidden&&!menu.contains(event.target)&&!categoriesToggle?.contains(event.target)&&!heroLink?.contains(event.target))setCategoryMenu(false);});
 const year=$("#year");if(year)year.textContent=new Date().getFullYear();
 renderCategories();
