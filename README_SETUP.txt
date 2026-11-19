@@ -1,4 +1,4 @@
-NOVEX - Storefront + Admin starter
+VEX - Storefront + Admin starter
 
 FILES
 - index.html: public storefront (customers do not need accounts)
@@ -21,7 +21,7 @@ SETUP
    where email = 'YOUR-ADMIN-EMAIL';
 7. Sign out and sign back in at /admin.html so the refreshed token includes the admin role.
 8. Enable GitHub Pages for the main branch / (root). The public URL is:
-   https://ahmed787-sudo.github.io/NOVEX/
+   https://ahmed787-sudo.github.io/VEX/
 
 ADMIN
 - Open /admin.html and sign in with the admin account.
