@@ -11,8 +11,7 @@ const categories=[
 {id:"gifts",name:"هدايا ومناسبات",description:"هدايا واختيارات للمناسبات المختلفة"}
 ];
 const $=s=>document.querySelector(s);
-const params=new URLSearchParams(location.search);
-const categoryId=params.get("category");
+const categoryId=document.body.dataset.category;
 const category=categories.find(c=>c.id===categoryId);
 let products=[];
 function safe(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
