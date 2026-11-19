@@ -16,7 +16,7 @@ footer{border-top:1px solid var(--line);padding:25px 7.5%;display:flex;align-ite
 .categories-section,.catalog-section{padding:52px 5% 25px}.section-heading{align-items:start;flex-direction:column;gap:8px}.section-heading h2{font-size:30px}.section-heading>p{font-size:13px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.category-card{min-height:130px;padding:14px}.category-name{font-size:15px}.category-icon{font-size:23px}.catalog-section{margin-top:35px;padding-top:50px;padding-bottom:55px}.catalog-tools{align-items:stretch;flex-direction:column}.search-box{max-width:none}.clear-filter{align-self:flex-start}.product-state{min-height:220px;padding:22px}.product-state h3{font-size:19px}.product-state p{font-size:13px}.about-section{margin:50px 5%;padding:27px 22px;gap:22px;align-items:flex-start;flex-direction:column}.about-mark{font-size:43px}.about-section h2{font-size:25px}.about-section p:last-child{font-size:13px}footer{padding:20px 5%;font-size:11px}}
 @media(max-width:360px){.category-grid{grid-template-columns:1fr 1fr}.category-card{min-height:120px;padding:11px}.hero h1{font-size:41px}}
 
-/* NOVEX dark storefront finish */
+/* VEX dark storefront finish */
 :root{--ink:#101512;--green:#304b3d;--mint:#26362d;--lime:#d2df91;--sand:#151b17;--paper:#101512;--muted:#a0aaa1;--line:#303b33;--white:#f4f5ef}
 body{background:#101512;color:#f4f5ef}
 .site-header{background:#101512;border-color:#303b33}
