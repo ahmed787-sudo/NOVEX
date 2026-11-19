@@ -49,3 +49,30 @@ footer{border-color:#303b33;color:#a0aaa1}
 .product-info strong{color:#d2df91;font-size:17px}
 .product-info del{color:#9aa69b;font-size:12px}
 .product-info p{color:#aeb9af;font-size:13px;line-height:1.7}
+
+/* Category landing links and responsive polish */
+.category-card{border-radius:14px;min-width:0}
+a.category-card{display:flex}
+.category-card:focus-visible,.menu-trigger:focus-visible,.clear-filter:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.product-card{min-width:0;border-radius:12px;overflow:hidden}
+.product-image{border-radius:8px}
+.product-image img{display:block;max-width:100%}
+@media(max-width:650px){
+  html{scroll-padding-top:72px}
+  .site-header{width:100%;gap:12px}
+  .main-nav{z-index:20}
+  .hero-copy{width:100%}
+  .category-card{min-height:126px}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .product-card{padding:9px}
+  .product-image{height:145px}
+  .product-info h3{font-size:14px;line-height:1.5}
+  .product-info strong{font-size:14px}
+  .product-info p{font-size:12px}
+}
+@media(max-width:380px){
+  .hero h1{font-size:38px}
+  .category-grid{gap:8px}
+  .category-card{padding:11px;min-height:116px}
+  .product-image{height:125px}
+}
