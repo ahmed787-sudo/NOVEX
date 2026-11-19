@@ -76,3 +76,38 @@ a.category-card{display:flex}
   .category-card{padding:11px;min-height:116px}
   .product-image{height:125px}
 }
+
+
+/* Dedicated category pages */
+.category-hero{
+  padding:58px 8% 64px;
+  background:radial-gradient(ellipse at 78% 35%,#263d2e 0,transparent 45%),#0b100d;
+  border-bottom:1px solid #303b33;
+}
+.category-hero .back-link{
+  display:inline-flex;align-items:center;gap:9px;
+  color:#d2df91;font-size:13px;font-weight:700;
+  margin-bottom:42px;padding:10px 0;
+}
+.category-hero .back-link:hover{color:#f4f5ef}
+.category-hero .eyebrow{margin-bottom:12px}
+.category-hero h1{
+  margin:0;color:#f4f5ef;font-size:clamp(38px,5vw,62px);
+  line-height:1.25;font-weight:900;
+}
+.category-hero>p:last-child{
+  color:#b2bdb3;font-size:16px;line-height:1.8;margin:14px 0 0;
+}
+.category-catalog{margin-top:0;padding-top:54px;min-height:48vh}
+.category-catalog .section-heading h2{color:#f4f5ef}
+.category-catalog .section-heading>p{color:#aeb9af}
+.category-catalog .catalog-tools{justify-content:flex-start}
+.category-page footer{background:#101512}
+@media(max-width:650px){
+ .category-hero{padding:35px 5% 43px}
+ .category-hero .back-link{margin-bottom:28px;font-size:12px}
+ .category-hero h1{font-size:38px}
+ .category-hero>p:last-child{font-size:14px}
+ .category-catalog{padding-top:38px;min-height:52vh}
+ .category-catalog .section-heading{gap:8px}
+}
